@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nitrox Gasblender</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css" />
+    <link rel="stylesheet" href="css/gasblender.css" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/gasblender.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/iosorintationfix.js"></script>
+</head>
+<body>
+<div data-role="page">
+
+    <div data-role="header">
+        <h1>Nitrox Gasblender</h1>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <input id="continuous" name="Fillmethod" value="continuous" data-theme="a" type="radio" checked>
+                <label for="continuous">
+                    Continuous Flow
+                </label>
+                <input id="partial" name="Fillmethod" value="partial" data-theme="a" type="radio">
+                <label for="partial">
+                    Partial Pressure
+                </label>
+            </fieldset>
+        </div>
+        <div id="errors"></div>
+        <div data-role="fieldcontain">
+            <div class="headerDivider">
+                <h3>Have</h3>
+            </div>
+            <div>
+                <label for="havePO2">
+                    Oxygen
+                </label>
+                <input id="havePO2" name="slider" value="21" min="21" max="40" data-highlight="false"
+                       type="range" style="margin-bottom: 5px;">
+            </div>
+            <div>
+                <label for="havePressure">
+                    Pressure
+                </label>
+                <input id="havePressure" name="slider" value="50" min="0" step="5" max="320" data-highlight="false"
+                       type="range">
+            </div>
+
+            <div class="headerDivider">
+                <h3>Want</h3>
+            </div>
+            <div>
+                <label for="wantPO2">
+                    Oxygen
+                </label>
+
+                <input id="wantPO2" name="slider" value="32" min="21" max="40" data-highlight="false"
+                       type="range" style="margin-bottom: 5px;">
+            </div>
+            <div>
+                <label for="wantPressure">
+                    Pressure
+                </label>
+                <input id="wantPressure" name="slider" value="235" min="0" step="5" max="320" data-highlight="false"
+                       type="range">
+            </div>
+        </div>
+
+
+        <div id="mixPage">
+            <div class="headerDivider">
+                <h3>Mix</h3>
+            </div>
+            <div id="mixContentPage">
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <div data-theme="c" data-role="footer" data-position="fixed" style="text-align: right; padding: 5px; background-color: black;">
+        <a id="calc" data-role="button" data-icon="grid" data-iconpos="left" data-theme="e"
+           style="margin-right: 10px;">
+            Calculate mix
+        </a>
+    </div>
+    <script>
+        $('document').ready(function() {
+            $('#calc').click (function() { calcNitrox(); });
+        })
+    </script>
+</div>
+<!-- /page -->
+</body>
+</html>
